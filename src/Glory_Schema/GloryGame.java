@@ -1,4 +1,4 @@
-package glorygame;
+package Glory_Schema;
 
 import java.io.*;
 import java.net.*;
