@@ -12,14 +12,11 @@ package Glory_Schema;
  */
 public class RegisterService {
   
-	private String name;
-    private String username;
-	char[] password = new char[] //With an array, we can wipe the data after we are done with it.
+
+	String password;
 
 	
-    protected RegisterService(String name,String username){
-        this.name = name;
-        this.username = username;
+    protected RegisterService(){
       
     }
 
