@@ -6,10 +6,10 @@ package Glory_Schema;
  * @author Thanzeel
  */
 public class GloryElement {
-    int userId; /*User id*/
-    static int gameHighScore; /*Legacy highscore of the game*/
-    int numberOfPlayers; /*Number of players*/
-    String playerName; /*Player name*/
+    public int userId; /*User id*/
+    public static int gameHighScore; /*Legacy highscore of the game*/
+    public int numberOfPlayers; /*Number of players*/
+    public String playerName; /*Player name*/
 }
 
 
