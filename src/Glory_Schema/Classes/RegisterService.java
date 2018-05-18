@@ -4,12 +4,23 @@
  * and open the template in the editor.
  */
 
-package Glory_Schema;
+package Glory_Schema.Classes;
 
 /**
  *
  * @author Thanzeel
  */
-public class DataBaseService {
-    
+public class RegisterService {
+  
+
+	String password;
+
+	
+    protected RegisterService(){
+      
+    }
+
+
+
+
 }

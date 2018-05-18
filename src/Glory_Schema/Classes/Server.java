@@ -1,4 +1,4 @@
-package Glory_Schema;
+package Glory_Schema.Classes;
 
 import java.io.*;
 import java.net.*;
@@ -15,7 +15,7 @@ public class Server {
          
             System.out.print("starting server....");
             serverSocket=new ServerSocket(7777);
-            System.out.println("Server started...");
+            System.out.println("\n Server started...");
             socket=serverSocket.accept();  
             System.out.println("Connection from : "+socket.getInetAddress() );
             out=new DataOutputStream(socket.getOutputStream());

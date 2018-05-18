@@ -1,4 +1,4 @@
-package Glory_Schema;
+package Glory_Schema.Classes;
 
 import java.io.*;
 import java.net.*;
@@ -10,6 +10,7 @@ public class GloryGame {
     
     public static void main(String[] args) {
         try{
+            
             System.out.println("Connecting...");
             socket=new Socket("localhost",7777);
             System.out.println("connection successfull");
@@ -18,10 +19,15 @@ public class GloryGame {
             String test=in.readUTF();
             System.out.println("Message from sever: "+test);
             
+            Socket server=new Socket("localhost",7777);
+            System.out.println("\n connection successfull test2");
+            in =new DataInputStream(server.getInputStream());
+            System.out.println("\n Receiving information 2");
+             test=in.readUTF();
+            System.out.println("\n Second call to serverMessage from sever: "+test);
         }
         
         catch(Exception e )
         {}
     }
-    
 }

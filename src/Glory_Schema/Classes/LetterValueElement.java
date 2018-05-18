@@ -1,4 +1,4 @@
-package Glory_Schema;
+package Glory_Schema.Classes;
 
 /**
  *
