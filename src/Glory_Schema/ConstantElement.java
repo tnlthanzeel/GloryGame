@@ -1,4 +1,4 @@
-package Glory_Schema.Classes;
+package Glory_Schema;
 /**
  *
  * @author Thanzeel

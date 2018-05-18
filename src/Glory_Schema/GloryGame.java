@@ -1,4 +1,4 @@
-package Glory_Schema.Classes;
+package Glory_Schema;
 
 import java.io.*;
 import java.net.*;
@@ -10,7 +10,6 @@ public class GloryGame {
     
     public static void main(String[] args) {
         try{
-            
             System.out.println("Connecting...");
             socket=new Socket("localhost",7777);
             System.out.println("connection successfull");

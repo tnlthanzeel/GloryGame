@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package Glory_Schema.Classes;
+package Glory_Schema;
 
 /**
  *
  * @author Thanzeel
  */
-public class BagElement {
+public class ScoringElement extends GloryElement {
     
 }
