@@ -3,7 +3,6 @@ package Glory_Schema.Classes;
 import java.io.*;
 import java.net.*;
 
-
 public class Server {
    
     public static ServerSocket serverSocket;

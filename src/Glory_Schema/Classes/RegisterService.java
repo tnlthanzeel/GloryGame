@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Glory_Schema.Classes;
 
 /**
@@ -12,15 +6,17 @@ package Glory_Schema.Classes;
  */
 public class RegisterService {
   
-
+        String userName;
 	String password;
+        String confirmPassword;
 
 	
-    protected RegisterService(){
+    public RegisterService(){
       
     }
 
-
-
+public void registerUser(){
+    
+}
 
 }
