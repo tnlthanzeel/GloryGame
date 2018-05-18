@@ -1,8 +1,8 @@
-    /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Glory_Schema_Interface;
+
+import Glory_Schema.RegisterService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +15,7 @@ public class Register_Interface extends javax.swing.JFrame {
      */
     public Register_Interface() {
         initComponents();
+        //setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -130,16 +131,20 @@ public class Register_Interface extends javax.swing.JFrame {
         jLabel4.setText("Confirm Password :");
 
         password.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        password.setText("jPasswordField1");
+        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         confirmPassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        confirmPassword.setText("jPasswordField1");
 
         userName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Register");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,16 +159,15 @@ public class Register_Interface extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(password)
-                        .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(password)
+                    .addComponent(confirmPassword))
                 .addGap(34, 34, 34))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(144, 144, 144)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +204,28 @@ public class Register_Interface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        RegisterService register=new RegisterService();
+        register.userName=userName.getText();
+        register.password=new String(password.getPassword());
+        register.confirmPassword=new String(confirmPassword.getPassword());
+        
+                if(register.userName.equals(""))
+        JOptionPane.showMessageDialog(null, "Please enter a username", "InvalidUser Name", JOptionPane.ERROR_MESSAGE);
+        
+        else if(register.password.equals(""))
+            JOptionPane.showMessageDialog(null, "Please enter a Password", "InvalidUser Password", JOptionPane.ERROR_MESSAGE);
+        
+        else if(register.confirmPassword.equals(""))
+            JOptionPane.showMessageDialog(null, "Please re-enter the Password to confirm", "Invalid Confirm Password", JOptionPane.ERROR_MESSAGE);
+        
+         else if(!register.password.equals(register.confirmPassword))
+            JOptionPane.showMessageDialog(null, "Confrim password does not match", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +282,6 @@ public class Register_Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField password;
-    private javax.swing.JTextField userName;
+    public static javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }
