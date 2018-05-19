@@ -1,4 +1,3 @@
-
 package Glory_Schema_Interface;
 
 import Glory_Schema.RegisterService;
@@ -206,25 +205,23 @@ public class Register_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        RegisterService register=new RegisterService();
-        register.userName=userName.getText();
-        register.password=new String(password.getPassword());
-        register.confirmPassword=new String(confirmPassword.getPassword());
-        
-                if(register.userName.equals(""))
-        JOptionPane.showMessageDialog(null, "Please enter a username", "InvalidUser Name", JOptionPane.ERROR_MESSAGE);
-        
-        else if(register.password.equals(""))
+
+        RegisterService register = new RegisterService();
+        register.userName = userName.getText();
+        register.password = new String(password.getPassword());
+        register.confirmPassword = new String(confirmPassword.getPassword());
+
+        if (register.userName.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter a username", "InvalidUser Name", JOptionPane.ERROR_MESSAGE);
+        } else if (register.password.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter a Password", "InvalidUser Password", JOptionPane.ERROR_MESSAGE);
-        
-        else if(register.confirmPassword.equals(""))
+        } else if (register.confirmPassword.equals("")) {
             JOptionPane.showMessageDialog(null, "Please re-enter the Password to confirm", "Invalid Confirm Password", JOptionPane.ERROR_MESSAGE);
-        
-         else if(!register.password.equals(register.confirmPassword))
+        } else if (!register.password.equals(register.confirmPassword)) {
             JOptionPane.showMessageDialog(null, "Confrim password does not match", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
-        
-        
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
