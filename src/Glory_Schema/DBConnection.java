@@ -6,21 +6,22 @@ import java.sql.*;
 
 public class DBConnection {
 
-    //Connection conObj;
+    Connection conObj;
     Statement stObj;
 
-    public void GetConnection() {
+    public Connection GetConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
              String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12238630";
 
-            Connection conObj = DriverManager.getConnection(url, "sql12238630", "nLJ8lFIzqr");
+             conObj = DriverManager.getConnection(url, "sql12238630", "nLJ8lFIzqr");
 
             System.out.println("db connected");
+            
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
-
+            return conObj;
     }
 }
 
