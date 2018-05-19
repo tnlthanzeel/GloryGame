@@ -1,5 +1,8 @@
 package Glory_Schema;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import java.io.*;
 import java.net.*;
 
@@ -10,6 +13,10 @@ public class GloryGame {
     
     public static void main(String[] args) {
         try{
+            
+            DBConnection db=new DBConnection();
+            db.GetConnection();
+                    
             System.out.println("Connecting...");
             socket=new Socket("localhost",7777);
             System.out.println("connection successfull");
