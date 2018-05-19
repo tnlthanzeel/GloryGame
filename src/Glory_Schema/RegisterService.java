@@ -6,9 +6,9 @@ package Glory_Schema;
  */
 public class RegisterService {
   
-        String userName;
-	String password;
-        String confirmPassword;
+       public String userName;
+	public String password;
+       public  String confirmPassword;
 
 	
     public RegisterService(){
