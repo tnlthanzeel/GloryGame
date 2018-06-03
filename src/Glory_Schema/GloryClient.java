@@ -16,7 +16,7 @@ public class GloryClient extends GloryElement {
 
     public static void connectToServer() {
         try {
-            
+
             GloryElement gloryElement = new GloryElement();
             Socket clientSocket = new Socket("127.0.0.7", 7777);
         } catch (IOException e) {

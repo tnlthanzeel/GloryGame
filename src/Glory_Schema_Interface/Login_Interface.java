@@ -198,7 +198,7 @@ public class Login_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        RegisterService register = new RegisterService();
+       RegisterService register = new RegisterService();
         register.userName = userName1.getText();
         register.password = new String(password.getPassword());
         //register.confirmPassword = new String(p.getPassword());

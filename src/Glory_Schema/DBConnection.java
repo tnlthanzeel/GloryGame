@@ -12,15 +12,19 @@ public class DBConnection {
     public static Connection GetConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12238630";
+            //String url = "jdbc:mysql://sql12.freemysqlhosting.net:3307/sql12241164";
+            String url = "jdbc:mysql://db4free.net:3306/glorygame";
 
-            conObj = DriverManager.getConnection(url, "sql12238630", "nLJ8lFIzqr");
+            //conObj = DriverManager.getConnection(url, "sql12241164", "JI6BCHXkTh");
+            conObj = DriverManager.getConnection(url, "glorygamedb", "553e27ec");
+
             return conObj;
         } catch (Exception ex) {
-            System.out.println(ex.toString());
+            ex.printStackTrace();
         }
         return conObj;
     }
+
 }
 
 /**
