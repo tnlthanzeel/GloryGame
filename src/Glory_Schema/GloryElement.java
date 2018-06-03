@@ -1,5 +1,7 @@
 package Glory_Schema;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Thanzeel
@@ -13,5 +15,12 @@ public class GloryElement {
     public int numberOfPlayers; /*Number of players*/
 
     public String playerName; /*Player name*/
+    
+    public Connection connectionObject;
+    
+    public GloryElement()
+    {
+    connectionObject=DBConnection.GetConnection();
+    }
 
 }

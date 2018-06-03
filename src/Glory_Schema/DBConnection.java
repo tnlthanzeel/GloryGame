@@ -4,12 +4,12 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.*;
 
-public class DBConnection {
+public  class DBConnection {
 
-    Connection conObj;
+    static Connection conObj;
     Statement stObj;
 
-    public Connection GetConnection() {
+    public static Connection GetConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
              String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12238630";
