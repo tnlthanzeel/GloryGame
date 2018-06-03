@@ -6,7 +6,6 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryElement;
-import Glory_Schema.GloryClient;
 import Glory_Schema.RegisterService;
 
 /**
@@ -20,7 +19,7 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
-        GloryClient.connectToServer();
+       GloryElement gloryElement = new GloryElement();
     }
 
     /**
