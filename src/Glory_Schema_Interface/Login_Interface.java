@@ -20,7 +20,7 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
-        GloryClient.connectToServer();
+        GloryClient.connectToDB();
     }
 
     /**
