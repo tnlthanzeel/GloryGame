@@ -20,6 +20,7 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
+        GloryClient.connectToServer();
     }
 
     /**
@@ -197,7 +198,6 @@ public class Login_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        GloryClient.connectToServer();
         RegisterService register = new RegisterService();
         register.userName = userName1.getText();
         register.password = new String(password.getPassword());
