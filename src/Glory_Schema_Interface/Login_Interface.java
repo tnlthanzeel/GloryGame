@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryElement;
+import Glory_Schema.GloryClient;
 import Glory_Schema.RegisterService;
 
 /**
@@ -196,21 +197,20 @@ public class Login_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-
+        GloryClient.connectToServer();
         RegisterService register = new RegisterService();
         register.userName = userName1.getText();
         register.password = new String(password.getPassword());
         //register.confirmPassword = new String(p.getPassword());
 
-        
 
     }//GEN-LAST:event_loginActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
         // TODO add your handling code here:
-       // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-       Register_Interface ri=new Register_Interface();
-       ri.setVisible(true);
+        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
+        Register_Interface ri = new Register_Interface();
+        ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RegisterActionPerformed
 
