@@ -15,9 +15,7 @@ public  class DBConnection {
              String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12238630";
 
              conObj = DriverManager.getConnection(url, "sql12238630", "nLJ8lFIzqr");
-
-            System.out.println("db connected");
-            
+            return conObj;
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
