@@ -5,18 +5,20 @@
  */
 package Glory_Schema;
 
+import java.io.IOException;
 import java.net.*;
+
 /**
  *
  * @author Ak
  */
 public class GloryClient extends GloryElement {
-   
-    public static void main(String args[]){
-        try{
-        Socket clientSocket = new Socket("127.0.0.7",7777);
+
+    public static void connectToServer() {
+        try {
+            Socket clientSocket = new Socket("127.0.0.7", 7777);
+        } catch (IOException e) {
         }
-        catch (Exception e){}
     }
-    
+
 }

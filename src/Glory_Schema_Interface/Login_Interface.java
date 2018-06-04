@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryElement;
 import Glory_Schema.RegisterService;
 
 /**
@@ -19,6 +19,7 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
+       GloryElement gloryElement = new GloryElement();
     }
 
     /**
@@ -206,12 +207,21 @@ public class Login_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-
-        RegisterService register = new RegisterService();
+       RegisterService register = new RegisterService();
         register.userName = userName1.getText();
         register.password = new String(password.getPassword());
         //register.confirmPassword = new String(p.getPassword());
+
+
     }//GEN-LAST:event_loginActionPerformed
+
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+        // TODO add your handling code here:
+        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
+        Register_Interface ri = new Register_Interface();
+        ri.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
