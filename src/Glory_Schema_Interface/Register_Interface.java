@@ -43,7 +43,8 @@ public class Register_Interface extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         confirmPassword = new javax.swing.JPasswordField();
         userName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Register = new javax.swing.JButton();
+        Login1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,12 +141,21 @@ public class Register_Interface extends javax.swing.JFrame {
 
         userName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Register");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Register.setBackground(new java.awt.Color(255, 255, 255));
+        Register.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Register.setText("Register");
+        Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RegisterActionPerformed(evt);
+            }
+        });
+
+        Login1.setBackground(new java.awt.Color(255, 255, 255));
+        Login1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Login1.setText("Login");
+        Login1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Login1ActionPerformed(evt);
             }
         });
 
@@ -163,12 +173,15 @@ public class Register_Interface extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Register)
+                        .addGap(18, 18, 18)
+                        .addComponent(Login1))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                         .addComponent(password)
                         .addComponent(confirmPassword)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +200,9 @@ public class Register_Interface extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Register)
+                    .addComponent(Login1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -206,7 +221,7 @@ public class Register_Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
 
         RegisterService register = new RegisterService();
         register.userName = userName.getText();
@@ -224,7 +239,14 @@ public class Register_Interface extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_RegisterActionPerformed
+
+    private void Login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login1ActionPerformed
+        // TODO add your handling code here:
+         Login_Interface ri=new Login_Interface();
+        ri.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Login1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,8 +290,9 @@ public class Register_Interface extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Login1;
+    private javax.swing.JButton Register;
     private javax.swing.JPasswordField confirmPassword;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
