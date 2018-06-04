@@ -20,6 +20,7 @@ public class Login_Interface extends javax.swing.JFrame {
     public Login_Interface() {
         initComponents();
        GloryElement gloryElement = new GloryElement();
+       setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**

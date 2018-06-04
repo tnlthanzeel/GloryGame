@@ -14,7 +14,7 @@ public class Register_Interface extends javax.swing.JFrame {
      */
     public Register_Interface() {
         initComponents();
-        //setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     Register_Interface(Login_Interface aThis, boolean rootPaneCheckingEnabled) {
