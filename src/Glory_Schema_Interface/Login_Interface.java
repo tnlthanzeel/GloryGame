@@ -42,8 +42,8 @@ public class Login_Interface extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         userName1 = new javax.swing.JTextField();
         login = new javax.swing.JButton();
-        Register = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        register = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -126,18 +126,18 @@ public class Login_Interface extends javax.swing.JFrame {
             }
         });
 
-        Register.setBackground(new java.awt.Color(255, 255, 255));
-        Register.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Register.setText("Register");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 0));
         jLabel4.setText("Do not have a account ?");
+
+        register.setBackground(new java.awt.Color(255, 255, 255));
+        register.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        register.setText("Register");
+        register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +146,7 @@ public class Login_Interface extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
@@ -158,9 +158,9 @@ public class Login_Interface extends javax.swing.JFrame {
                         .addComponent(password))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Register)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(register)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +176,11 @@ public class Login_Interface extends javax.swing.JFrame {
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(login)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(Register))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(register))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -198,13 +198,11 @@ public class Login_Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-        Register_Interface ri=new Register_Interface();
-        ri.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RegisterActionPerformed
+       
+    }                                        
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        RegisterService register = new RegisterService();
@@ -215,13 +213,20 @@ public class Login_Interface extends javax.swing.JFrame {
 
     }//GEN-LAST:event_loginActionPerformed
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
-        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-        Register_Interface ri = new Register_Interface();
+         Register_Interface ri=new Register_Interface();
         ri.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_RegisterActionPerformed
+    }//GEN-LAST:event_registerActionPerformed
+
+                                         
+
+                                       
+
+                                           
+
+                                       
 
     /**
      * @param args the command line arguments
@@ -259,7 +264,6 @@ public class Login_Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Register;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -270,7 +274,8 @@ public class Login_Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton login;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField userName1;
+    public static javax.swing.JPasswordField password;
+    private javax.swing.JButton register;
+    public static javax.swing.JTextField userName1;
     // End of variables declaration//GEN-END:variables
 }
