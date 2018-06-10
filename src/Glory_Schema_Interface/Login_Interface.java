@@ -5,7 +5,9 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
+import Glory_Schema.LetterValueElement;
 import Glory_Schema.LoginService;
 import Glory_Schema.RegisterService;
 import javax.swing.JOptionPane;
@@ -201,23 +203,23 @@ public class Login_Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-
-    }
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        if (loginusername.getText().equals("") ||  new String(loginpasswrod.getPassword()).equals("")) {
+
+        LetterValueElement l = new LetterValueElement();
+        l.generateFirstThreeeLetters();
+        //---------------------------test------------------------------------------
+
+        if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
-        return;
+            return;
         }
 
         LoginService loginService = new LoginService();
         loginService.userName = loginusername.getText();
         loginService.password = new String(loginpasswrod.getPassword());
         loginService.authenticateUser(loginService);
-
+        GloryClient.connectToServer();
 
     }//GEN-LAST:event_loginActionPerformed
 
