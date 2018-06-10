@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Glory_Schema;
 
 /**
@@ -11,5 +10,13 @@ package Glory_Schema;
  * @author Thanzeel
  */
 public class LoginService {
-    
+
+    public String userName;
+    public String password;
+
+    public boolean authenticateUser(LoginService loginService) {
+
+        return false;
+    }
+
 }

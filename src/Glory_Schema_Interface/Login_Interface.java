@@ -6,6 +6,7 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryElement;
+import Glory_Schema.LoginService;
 import Glory_Schema.RegisterService;
 
 /**
@@ -40,8 +41,8 @@ public class Login_Interface extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
-        userName1 = new javax.swing.JTextField();
+        loginpasswrod = new javax.swing.JPasswordField();
+        loginusername = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
@@ -111,12 +112,12 @@ public class Login_Interface extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Password                :");
 
-        password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        loginpasswrod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loginpasswrod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginpasswrod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        userName1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        userName1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginusername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loginusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -155,8 +156,8 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(login)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userName1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                        .addComponent(password))
+                        .addComponent(loginusername, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                        .addComponent(loginpasswrod))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -170,11 +171,11 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addGap(18, 37, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(userName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginpasswrod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,18 +200,12 @@ public class Login_Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-       
-    }                                        
+                                         
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-       RegisterService register = new RegisterService();
-        register.userName = userName1.getText();
-        register.password = new String(password.getPassword());
-        //register.confirmPassword = new String(p.getPassword());
-
+      LoginService loginService=new LoginService();
+      loginService.userName=loginusername.getText();
+      loginService.password=new String(loginpasswrod.getPassword());
 
     }//GEN-LAST:event_loginActionPerformed
 
@@ -221,14 +216,7 @@ public class Login_Interface extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_registerActionPerformed
 
-                                         
-
-                                       
-
-                                           
-
-                                       
-
+ 
     /**
      * @param args the command line arguments
      */
@@ -275,8 +263,8 @@ public class Login_Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton login;
-    public static javax.swing.JPasswordField password;
+    public static javax.swing.JPasswordField loginpasswrod;
+    public static javax.swing.JTextField loginusername;
     private javax.swing.JButton register;
-    public static javax.swing.JTextField userName1;
     // End of variables declaration//GEN-END:variables
 }
