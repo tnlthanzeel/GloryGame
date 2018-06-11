@@ -7,9 +7,7 @@ package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
-import Glory_Schema.LetterValueElement;
 import Glory_Schema.LoginService;
-import Glory_Schema.RegisterService;
 import javax.swing.JOptionPane;
 
 /**
@@ -207,7 +205,6 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
        //---------------------- code debug area begin ---------------------
-        GloryClient.connectToServer();
         
         
         //--------------------------- code debug area begin ------------------------------------------
