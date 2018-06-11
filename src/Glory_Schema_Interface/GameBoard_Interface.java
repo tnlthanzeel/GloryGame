@@ -3,20 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Glory_Schema_Interface;
+
+import Glory_Schema.LetterValueElement;
 
 /**
  *
  * @author hame
  */
 public class GameBoard_Interface extends javax.swing.JFrame {
+    
+    LetterValueElement letterElement;
+    public char[] firsthree = new char[3];
 
     /**
      * Creates new form GameBoard_Interface
      */
     public GameBoard_Interface() {
         initComponents();
+        letterElement = new LetterValueElement();
+        firsthree = letterElement.generateFirstThreeeLetters();
     }
 
     /**
@@ -55,9 +61,24 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
         btn1.setBackground(new java.awt.Color(102, 255, 102));
         btn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn1MouseClicked(evt);
+            }
+        });
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
 
         btn2.setBackground(new java.awt.Color(102, 255, 102));
         btn2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         btn3.setBackground(new java.awt.Color(102, 255, 102));
         btn3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -212,13 +233,26 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        // TODO add your handling code here:
+        btn3.setText(String.valueOf(firsthree[2]));
     }//GEN-LAST:event_btn3ActionPerformed
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void btn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseClicked
+        btn1.setText(String.valueOf(firsthree[0]));
+    }//GEN-LAST:event_btn1MouseClicked
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        btn2.setText(String.valueOf(firsthree[1]));
+    }//GEN-LAST:event_btn2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -244,7 +278,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
+                
                 new GameBoard_Interface().setVisible(true);
             }
         });

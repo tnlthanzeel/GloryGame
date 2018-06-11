@@ -18,13 +18,11 @@ public class LoginService extends GloryElement {
     public String password;
 
     public boolean authenticateUser(LoginService loginService) {
-        try {
-            ResultSet rs = connectionObject.createStatement().executeQuery("select * from cusdet where dcusid='" + loginService.userName + "'");
 
-            if (rs.next()) {
-                userName = rs.getString(1);
-                password = rs.getString(2);
-
+    //ResultSet rs = connectionObject.createStatement().executeQuery("select * from cusdet where dcusid='" + loginService.userName + "'");
+            //if (rs.next()) {
+        // userName = rs.getString(1);
+        //password = rs.getString(2);
 //                if (tempid.equals(un) && temppass.equals(tmp) && st == 0) {
 //
 //                    jPasswordField1.setText("");
@@ -40,11 +38,6 @@ public class LoginService extends GloryElement {
 //                    jLabel10.setVisible(true);
 //                    jLabel10.setText("Invalid User ID or password");
 //                }
-            }
-            return false;
-        } catch (SQLException e) {
-
-            return false;
-        }
+        return true;
     }
 }
