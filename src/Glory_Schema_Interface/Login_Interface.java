@@ -5,8 +5,12 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
+import Glory_Schema.LetterValueElement;
+import Glory_Schema.LoginService;
 import Glory_Schema.RegisterService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +23,8 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
-       GloryElement gloryElement = new GloryElement();
+        GloryElement gloryElement = new GloryElement();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -39,11 +44,11 @@ public class Login_Interface extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
-        userName1 = new javax.swing.JTextField();
+        loginpasswrod = new javax.swing.JPasswordField();
+        loginusername = new javax.swing.JTextField();
         login = new javax.swing.JButton();
-        Register = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        register = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -110,12 +115,12 @@ public class Login_Interface extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Password                :");
 
-        password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        password.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        loginpasswrod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loginpasswrod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginpasswrod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        userName1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        userName1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loginusername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loginusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -126,18 +131,18 @@ public class Login_Interface extends javax.swing.JFrame {
             }
         });
 
-        Register.setBackground(new java.awt.Color(255, 255, 255));
-        Register.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Register.setText("Register");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 0));
         jLabel4.setText("Do not have a account ?");
+
+        register.setBackground(new java.awt.Color(255, 255, 255));
+        register.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        register.setText("Register");
+        register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +151,7 @@ public class Login_Interface extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
@@ -154,13 +159,13 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(login)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userName1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                        .addComponent(password))
+                        .addComponent(loginusername, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                        .addComponent(loginpasswrod))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Register)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(register)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,18 +174,18 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addGap(18, 37, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(userName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginpasswrod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(login)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(Register))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(register))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -198,30 +203,33 @@ public class Login_Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        // TODO add your handling code here:
-        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
-        Register_Interface ri=new Register_Interface();
-        ri.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RegisterActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-       RegisterService register = new RegisterService();
-        register.userName = userName1.getText();
-        register.password = new String(password.getPassword());
-        //register.confirmPassword = new String(p.getPassword());
 
+       //---------------------- code debug area begin ---------------------
+        GloryClient.connectToServer();
+        
+        
+        //--------------------------- code debug area begin ------------------------------------------
+
+        if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        LoginService loginService = new LoginService();
+        loginService.userName = loginusername.getText();
+        loginService.password = new String(loginpasswrod.getPassword());
+        loginService.authenticateUser(loginService);
 
     }//GEN-LAST:event_loginActionPerformed
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
-        // new Register_Interface(this, rootPaneCheckingEnabled).setVisible(true);
         Register_Interface ri = new Register_Interface();
         ri.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_RegisterActionPerformed
+    }//GEN-LAST:event_registerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +267,6 @@ public class Login_Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Register;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -270,7 +277,8 @@ public class Login_Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton login;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField userName1;
+    public static javax.swing.JPasswordField loginpasswrod;
+    public static javax.swing.JTextField loginusername;
+    private javax.swing.JButton register;
     // End of variables declaration//GEN-END:variables
 }
