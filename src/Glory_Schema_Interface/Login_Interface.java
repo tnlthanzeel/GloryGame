@@ -205,6 +205,7 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
        //---------------------- code debug area begin ---------------------
+        GloryClient.connectToServer();
         
         
         //--------------------------- code debug area begin ------------------------------------------
