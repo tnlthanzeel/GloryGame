@@ -21,6 +21,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
      */
     public GameBoard_Interface() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
         letterElement = new LetterValueElement();
         firsthree = letterElement.generateFirstThreeeLetters();
     }
