@@ -207,7 +207,7 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
         //---------------------- code debug area begin ---------------------
-
+GloryClient.connectToServer();
         //--------------------------- code debug area begin ------------------------------------------
         if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
