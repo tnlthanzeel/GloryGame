@@ -1,4 +1,4 @@
-package FlogSchema;
+package Glory_Schema;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
