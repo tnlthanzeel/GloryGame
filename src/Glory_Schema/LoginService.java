@@ -5,18 +5,30 @@
  */
 package Glory_Schema;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Thanzeel
  */
-public class LoginService {
+public class LoginService extends GloryElement {
 
     public String userName;
     public String password;
+    boolean isValidUser;
 
     public boolean authenticateUser(LoginService loginService) {
-
-        return true;
+        try {
+            ResultSet rs = connectionObject.createStatement().executeQuery("select * from users where username='" + loginService.userName + "'");
+            if (rs.next()) {
+                userName = rs.getString(2);
+                password = rs.getString(3);
+                isValidUser = userName.equals(loginService.userName) && password.equals(loginService.password);
+            }
+        } catch (SQLException ex) {
+            isValidUser = false;
+        }
+        return isValidUser;
     }
-
 }

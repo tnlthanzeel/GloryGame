@@ -25,6 +25,4 @@ public class LetterValueElement extends GloryElement {
         }
         return firstThreeLetters;
     }
-
-
 }

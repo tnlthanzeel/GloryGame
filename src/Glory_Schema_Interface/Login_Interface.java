@@ -8,7 +8,6 @@ package Glory_Schema_Interface;
 import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
-import Glory_Schema.RegisterService;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,8 +23,8 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
-       GloryElement gloryElement = new GloryElement();
-       setExtendedState(MAXIMIZED_BOTH);
+        GloryElement gloryElement = new GloryElement();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -208,7 +207,7 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
         //---------------------- code debug area begin ---------------------
-
+//GloryClient.connectToServer();
         //--------------------------- code debug area begin ------------------------------------------
         if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -221,19 +220,19 @@ public class Login_Interface extends javax.swing.JFrame {
         boolean result = loginService.authenticateUser(loginService);
         if (result) {
             gameboard.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
-        this.dispose();
-        return;
     }//GEN-LAST:event_loginActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
-         Register_Interface ri=new Register_Interface();
+        Register_Interface ri = new Register_Interface();
         ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registerActionPerformed
 
- 
     /**
      * @param args the command line arguments
      */
