@@ -20,11 +20,11 @@ public class LoginService extends GloryElement {
 
     public boolean authenticateUser(LoginService loginService) {
         try {
-            ResultSet rs = connectionObject.createStatement().executeQuery("select * from users where username='" + loginService.userName + "'");
+            ResultSet rs = connectionObject.createStatement().executeQuery("select * from users where username='" + loginService.userName + "' AND password='" + loginService.password + "'");
             if (rs.next()) {
-                userName = rs.getString(2);
-                password = rs.getString(3);
-                isValidUser = userName.equals(loginService.userName) && password.equals(loginService.password);
+                isValidUser = true;
+            } else {
+                isValidUser = false;
             }
         } catch (SQLException ex) {
             isValidUser = false;
