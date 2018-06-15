@@ -230,26 +230,20 @@ public class Register_Interface extends javax.swing.JFrame {
 
         if (register.userName.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter a username", "InvalidUser Name", JOptionPane.ERROR_MESSAGE);
-            return;
         } else if (register.password.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter a Password", "InvalidUser Password", JOptionPane.ERROR_MESSAGE);
-            return;
         } else if (register.confirmPassword.equals("")) {
             JOptionPane.showMessageDialog(null, "Please re-enter the Password to confirm", "Invalid Confirm Password", JOptionPane.ERROR_MESSAGE);
-            return;
         } else if (!register.password.equals(register.confirmPassword)) {
             JOptionPane.showMessageDialog(null, "Confrim password does not match", "Password Mismatch", JOptionPane.ERROR_MESSAGE);
-            return;
         }
-        register.registerUser(register);
-        Login_Interface ri = new Login_Interface();
-        ri.setVisible(true);
-        this.dispose();
+
+
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void Login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login1ActionPerformed
         // TODO add your handling code here:
-        Login_Interface ri = new Login_Interface();
+         Login_Interface ri=new Login_Interface();
         ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Login1ActionPerformed
