@@ -7,34 +7,105 @@ package Glory_Schema;
 
 import java.io.*;
 import java.net.*;
-import java.util.Date;
+import java.util.Scanner;
+
 
 /**
  *
  * @author Ak
  */
-public class GloryClient extends GloryElement {
+public class GloryClient {
 
-    public static void connectToServer() {
-        try {
-            Socket socket = new Socket("127.0.0.1", 4000);
-            BufferedWriter writerChannel = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            BufferedReader readerChannel = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String line;
+    Socket s;
+    DataInputStream din;
+    DataOutputStream dout;
 
-            writerChannel.write(new Date().toString() + "\n\r");
-            writerChannel.flush();
+    public static void main(String[] args) {
 
-            while ((line = readerChannel.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (Exception e) {
-
-        }
-//        try {
-//            Socket clientSocket = new Socket("127.0.0.7", 7777);
-//        } catch (IOException e) {
-//        }
+        new GloryClient();
     }
 
+    public GloryClient() {
+        try {
+            s = new Socket("localhost", 7777);
+            din = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
+
+            listenForInput();
+        } catch (UnknownHostException e) {
+            
+        } catch (IOException e) {
+            
+        }
+    }
+
+    public void listenForInput() {
+        Scanner console = new Scanner(System.in);
+        while (true) {
+            while (!console.hasNextLine()) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException ex) {
+                    
+                }
+            }
+
+            String input = console.nextLine();
+
+            if (input.toLowerCase().equals("quit")) {
+                break;
+            }
+
+            try {
+                dout.writeUTF(input);
+
+                while (din.available() == 0) {
+                    try {
+                        Thread.sleep(1);
+                    } catch (InterruptedException ex) {
+                        
+                    }
+                }
+
+                String reply = din.readUTF();
+                System.out.println(reply);
+            } catch (IOException ex) {
+                
+                break;
+            }
+        }
+
+        try {
+            din.close();
+            dout.close();
+            s.close();
+        } catch (IOException ex) {
+            
+        }
+    }
 }
+//public class GloryClient extends GloryElement{
+//
+//    public static void connectToServer() {
+//        try {
+//            Socket socket = new Socket("127.0.0.1", 4000);
+//            BufferedWriter writerChannel = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+//            BufferedReader readerChannel = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//            String line;
+//
+//            writerChannel.write(new Date().toString() + "\n\r");
+//            writerChannel.flush();
+//
+//            while ((line = readerChannel.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//        } catch (Exception e) {
+//
+//        }
+////        try {
+////            Socket clientSocket = new Socket("127.0.0.7", 7777);
+////        } catch (IOException e) {
+////        }
+//    }
+//
+//}

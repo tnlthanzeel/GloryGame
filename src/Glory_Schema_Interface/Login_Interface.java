@@ -207,7 +207,7 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
         //---------------------- code debug area begin ---------------------
-GloryClient.connectToServer();
+//GloryClient.connectToServer();
         //--------------------------- code debug area begin ------------------------------------------
         if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -220,9 +220,10 @@ GloryClient.connectToServer();
         boolean result = loginService.authenticateUser(loginService);
         if (result) {
             gameboard.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
-        this.dispose();
-        return;
     }//GEN-LAST:event_loginActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
