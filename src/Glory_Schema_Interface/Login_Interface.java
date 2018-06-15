@@ -8,6 +8,7 @@ package Glory_Schema_Interface;
 import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
+import Glory_Schema.RegisterService;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +24,8 @@ public class Login_Interface extends javax.swing.JFrame {
      */
     public Login_Interface() {
         initComponents();
-        GloryElement gloryElement = new GloryElement();
-        setExtendedState(MAXIMIZED_BOTH);
+       GloryElement gloryElement = new GloryElement();
+       setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -227,11 +228,12 @@ public class Login_Interface extends javax.swing.JFrame {
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         // TODO add your handling code here:
-        Register_Interface ri = new Register_Interface();
+         Register_Interface ri=new Register_Interface();
         ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registerActionPerformed
 
+ 
     /**
      * @param args the command line arguments
      */
