@@ -68,7 +68,7 @@
 //        int max=0;
 //        String sql = "select word from words where word like '"+ FirstLetter +"%'";
 //        ResultSet rs;
-//        Connection con = DbConnection.connectDB();
+//        Connection con = .connectDB();
 //        PreparedStatement st;
 //        st = con.prepareStatement(sql);
 //        rs = st.executeQuery(sql);

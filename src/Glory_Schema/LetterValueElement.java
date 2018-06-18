@@ -1,6 +1,7 @@
 package Glory_Schema;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +12,10 @@ public class LetterValueElement extends GloryElement {
     int score;
     Random random = new Random();
     char uniqueLetter;
+    char[] vowel = {'a', 'e', 'i', 'o', 'u'};
+    char[] consonent = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+    Random randomLetters;
+    static int arrayElement;
 
     public char[] generateFirstThreeeLetters() {
         char[] firstThreeLetters = new char[3];
@@ -24,5 +29,25 @@ public class LetterValueElement extends GloryElement {
             }
         }
         return firstThreeLetters;
+    }
+
+    public char GenerateLetter() {
+        String[] values = {"Vowel", "Consonent",};
+        char randomLetter = ' ';
+        Object selected = JOptionPane.showInputDialog(null, "Choose a letter type", "Letter Selection", JOptionPane.DEFAULT_OPTION, null, values, "0");
+        if (selected != null) {//null if the user cancels. 
+            if (selected.toString().equals("Consonent")) {
+                randomLetters = new Random(consonent.length);
+                arrayElement = random.nextInt(consonent.length);
+                randomLetter = consonent[arrayElement];
+            } else {
+                {
+                    randomLetters = new Random(vowel.length);
+                    arrayElement = random.nextInt(vowel.length);
+                    randomLetter = vowel[arrayElement];
+                }
+            }
+        }
+        return randomLetter;
     }
 }

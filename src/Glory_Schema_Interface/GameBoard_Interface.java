@@ -6,15 +6,17 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.LetterValueElement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hame
  */
 public class GameBoard_Interface extends javax.swing.JFrame {
-    
+
     LetterValueElement letterElement;
     public char[] firsthree = new char[3];
+    public char[] lastEight = new char[8];
 
     /**
      * Creates new form GameBoard_Interface
@@ -24,6 +26,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         letterElement = new LetterValueElement();
         firsthree = letterElement.generateFirstThreeeLetters();
+        LetterValueElement letterElement = new LetterValueElement();
     }
 
     /**
@@ -92,27 +95,72 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
         btn5.setBackground(new java.awt.Color(255, 255, 0));
         btn5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn5MouseClicked(evt);
+            }
+        });
 
         btn4.setBackground(new java.awt.Color(255, 255, 0));
         btn4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn4MouseClicked(evt);
+            }
+        });
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
 
         btn6.setBackground(new java.awt.Color(255, 255, 0));
         btn6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn6MouseClicked(evt);
+            }
+        });
 
         btn7.setBackground(new java.awt.Color(255, 255, 0));
         btn7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn7MouseClicked(evt);
+            }
+        });
 
         btn9.setBackground(new java.awt.Color(255, 255, 0));
         btn9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn9MouseClicked(evt);
+            }
+        });
 
         btn10.setBackground(new java.awt.Color(255, 255, 0));
         btn10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn10MouseClicked(evt);
+            }
+        });
 
         btn11.setBackground(new java.awt.Color(255, 255, 0));
         btn11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn11MouseClicked(evt);
+            }
+        });
 
         btn8.setBackground(new java.awt.Color(255, 255, 0));
         btn8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn8MouseClicked(evt);
+            }
+        });
 
         txt1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
@@ -265,8 +313,54 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_btn_exitActionPerformed
+
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
+    }//GEN-LAST:event_btn4ActionPerformed
+
+    private void btn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseClicked
+
+        if(btn4.getText().equals(""))
+        btn4.setText(String.valueOf(letterElement.GenerateLetter()));
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn4MouseClicked
+
+    private void btn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseClicked
+        if(btn5.getText().equals(""))
+        btn5.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn5MouseClicked
+
+    private void btn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseClicked
+        if(btn6.getText().equals(""))
+        btn6.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn6MouseClicked
+
+    private void btn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseClicked
+        if(btn7.getText().equals(""))
+        btn7.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn7MouseClicked
+
+    private void btn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseClicked
+        if(btn8.getText().equals(""))
+        btn8.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn8MouseClicked
+
+    private void btn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseClicked
+        if(btn9.getText().equals(""))
+        btn9.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn9MouseClicked
+
+    private void btn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn10MouseClicked
+        if(btn10.getText().equals(""))
+        btn10.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn10MouseClicked
+
+    private void btn11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn11MouseClicked
+        if(btn11.getText().equals(""))
+        btn11.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+    }//GEN-LAST:event_btn11MouseClicked
 
     /**
      * @param args the command line arguments
@@ -298,9 +392,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            
+
             public void run() {
-                
+
                 new GameBoard_Interface().setVisible(true);
             }
         });
