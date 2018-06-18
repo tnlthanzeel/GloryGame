@@ -5,9 +5,7 @@
  */
 package Glory_Schema_Interface;
 
-import Glory_Schema.GloryElement;
 import Glory_Schema.LetterValueElement;
-import javax.swing.JOptionPane;
 /**
  *
  * @author hame

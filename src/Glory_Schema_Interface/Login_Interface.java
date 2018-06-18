@@ -5,7 +5,6 @@
  */
 package Glory_Schema_Interface;
 
-import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
 import javax.swing.JOptionPane;
