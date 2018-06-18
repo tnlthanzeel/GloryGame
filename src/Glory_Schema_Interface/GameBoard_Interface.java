@@ -5,9 +5,9 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryElement;
 import Glory_Schema.LetterValueElement;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author hame
@@ -16,8 +16,6 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     LetterValueElement letterElement;
     public char[] firsthree = new char[3];
-    public char[] lastEight = new char[8];
-
     /**
      * Creates new form GameBoard_Interface
      */
@@ -312,8 +310,10 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        // TODO add your handling code here:
-
+        Login_Interface lg=new Login_Interface();
+        lg.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
@@ -359,7 +359,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     private void btn11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn11MouseClicked
         if(btn11.getText().equals(""))
-        btn11.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        btn11.setText(String.valueOf(letterElement.GenerateLetter()));
     }//GEN-LAST:event_btn11MouseClicked
 
     /**
@@ -389,7 +389,6 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GameBoard_Interface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
 

@@ -8,6 +8,7 @@ import java.sql.Connection;
  */
 public class GloryElement {
 
+    public static char[] allLetters = new char[11];
     public int userId; /*User id*/
 
     public static int gameHighScore; /*Legacy highscore of the game*/
@@ -15,12 +16,10 @@ public class GloryElement {
     public int numberOfPlayers; /*Number of players*/
 
     public String playerName; /*Player name*/
-    
-    public Connection connectionObject;
-    
-    public GloryElement()
-    {
-    connectionObject=DBConnection.GetConnection();
-    }
 
+    public Connection connectionObject;
+
+    public GloryElement() {
+        connectionObject = DBConnection.GetConnection();
+    }
 }
