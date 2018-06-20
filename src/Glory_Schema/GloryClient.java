@@ -10,7 +10,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-
 /**
  *
  * @author Ak
@@ -47,7 +46,7 @@ public class GloryClient {
         if (message.equals("exit")) {
             System.exit(0);
         } else {
-        try {
+            try {
                 Socket s = new Socket(hostName, serverPort);
                 System.out.println(message);
                 writer = new DataOutputStream(s.getOutputStream());
@@ -65,7 +64,7 @@ public class GloryClient {
 
     public String getIP() {
         return hostName;
-            }
+    }
 
     public static GloryClient getGameClient() {
         if (client == null) {
@@ -85,4 +84,6 @@ public class GloryClient {
             clientSocket.close();
         } catch (IOException ex) {
 
+        }
+    }
 }

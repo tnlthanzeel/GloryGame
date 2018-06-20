@@ -374,7 +374,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
 String word=txt1.getText();
 boolean result=wordelement.contains(word);
-
+System.out.println(result);
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_submitMouseClicked
 
