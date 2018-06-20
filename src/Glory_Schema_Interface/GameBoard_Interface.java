@@ -6,6 +6,10 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.LetterValueElement;
+import Glory_Schema.WordElement;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author hame
@@ -14,15 +18,17 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     LetterValueElement letterElement;
     public char[] firsthree = new char[3];
+    WordElement wordelement;
     /**
      * Creates new form GameBoard_Interface
      */
-    public GameBoard_Interface() {
+    public GameBoard_Interface()  {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         letterElement = new LetterValueElement();
         firsthree = letterElement.generateFirstThreeeLetters();
         LetterValueElement letterElement = new LetterValueElement();
+         wordelement=new WordElement();
     }
 
     /**
@@ -164,6 +170,11 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         btn_submit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_submit.setForeground(new java.awt.Color(255, 255, 255));
         btn_submit.setText("Submit");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_submitMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -360,6 +371,13 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         btn11.setText(String.valueOf(letterElement.GenerateLetter()));
     }//GEN-LAST:event_btn11MouseClicked
 
+    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
+String word=txt1.getText();
+boolean result=wordelement.contains(word);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_submitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -392,7 +410,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
             public void run() {
 
-                new GameBoard_Interface().setVisible(true);
+              
+                    new GameBoard_Interface().setVisible(true);
+                
             }
         });
     }

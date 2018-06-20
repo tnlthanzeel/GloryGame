@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Login_Interface extends javax.swing.JFrame {
 
-    GameBoard_Interface gameboard = new GameBoard_Interface();
+    GameBoard_Interface gameboard ;
 
     /**
      * Creates new form Login_Interface
@@ -24,6 +24,7 @@ public class Login_Interface extends javax.swing.JFrame {
         initComponents();
         GloryElement gloryElement = new GloryElement();
         setExtendedState(MAXIMIZED_BOTH);
+        gameboard = new GameBoard_Interface();
     }
 
     /**
