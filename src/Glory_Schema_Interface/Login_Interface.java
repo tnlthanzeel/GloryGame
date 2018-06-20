@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class Login_Interface extends javax.swing.JFrame {
 
     GameBoard_Interface gameboard = new GameBoard_Interface();
+    GloryClient client;
 
     /**
      * Creates new form Login_Interface
@@ -207,8 +208,9 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
         //---------------------- code debug area begin ---------------------
-GloryClient.connectToServer();
-        //--------------------------- code debug area begin ------------------------------------------
+       client = new GloryClient();
+
+//--------------------------- code debug area begin ------------------------------------------
         if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             return;
@@ -220,6 +222,7 @@ GloryClient.connectToServer();
         boolean result = loginService.authenticateUser(loginService);
         if (result) {
             gameboard.setVisible(true);
+
         }
         this.dispose();
         return;

@@ -5,8 +5,7 @@
  */
 package Glory_Schema;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 /**
  *
