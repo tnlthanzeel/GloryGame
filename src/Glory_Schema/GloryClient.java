@@ -11,6 +11,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author Ak
@@ -38,12 +39,12 @@ public class GloryClient {
             while (true) {
                 String str = sc.nextLine();
                 out.writeUTF(str);
-            }
+    }
         } catch (IOException ex) {
             Logger.getLogger(GloryClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
-}
+            }
+        }
 
 class Input implements Runnable {
 
@@ -51,7 +52,7 @@ class Input implements Runnable {
 
     public Input(DataInputStream in) {
         this.in = in;
-    }
+            }
 
     public void run() {
         while (true) {
