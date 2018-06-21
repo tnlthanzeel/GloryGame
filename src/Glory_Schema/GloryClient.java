@@ -5,11 +5,11 @@
  */
 package Glory_Schema;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,72 +17,51 @@ import java.net.Socket;
  */
 public class GloryClient {
 
-    /**
-     * Creates a new instance of Client
-     */
-    private Socket clientSocket;
-    private String hostName;
-    private int serverPort;
-    private DataInputStream reader;
-    private DataOutputStream writer;
-    private Protocol protocol;
-
-    private static GloryClient client;
+    static Socket socket;
+    static DataInputStream in;
+    static DataOutputStream out;
 
     public GloryClient() {
-        protocol = new Protocol();
-    }
-
-    public void register(String Ip, int port, int posX, int posY) throws IOException {
-        this.serverPort = port;
-        this.hostName = Ip;
-        clientSocket = new Socket(Ip, port);
-        writer = new DataOutputStream(clientSocket.getOutputStream());
-
-        writer.writeUTF(protocol.RegisterPacket(posX, posY));
-
-    }
-
-    public void sendToServer(String message) {
-        if (message.equals("exit")) {
-            System.exit(0);
-        } else {
         try {
-                Socket s = new Socket(hostName, serverPort);
-                System.out.println(message);
-                writer = new DataOutputStream(s.getOutputStream());
-                writer.writeUTF(message);
-            } catch (IOException ex) {
-
+            System.out.println("Connecting...");
+            socket = new Socket("localhost", 7777);
+            System.out.println("Connection Successful");
+            in = new DataInputStream(socket.getInputStream());
+            out = new DataOutputStream(socket.getOutputStream());
+            Input input = new Input(in);
+            Thread thread = new Thread(input);
+            thread.start();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Your Username:");
+            String name = sc.nextLine();
+            out.writeUTF(name);
+            while (true) {
+                String str = sc.nextLine();
+                out.writeUTF(str);
             }
-        }
-
-    }
-
-    public Socket getSocket() {
-        return clientSocket;
-    }
-
-    public String getIP() {
-        return hostName;
-            }
-
-    public static GloryClient getGameClient() {
-        if (client == null) {
-            try {
-                client = new GloryClient();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-        return client;
-    }
-
-    public void closeAll() {
-        try {
-            reader.close();
-            writer.close();
-            clientSocket.close();
         } catch (IOException ex) {
+            Logger.getLogger(GloryClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
 
+class Input implements Runnable {
+
+    DataInputStream in;
+
+    public Input(DataInputStream in) {
+        this.in = in;
+    }
+
+    public void run() {
+        while (true) {
+            String msg;
+            try {
+                msg = in.readUTF();
+                System.out.println(msg);
+            } catch (IOException ex) {
+                Logger.getLogger(Input.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }

@@ -5,8 +5,14 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
+//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginpasswrod;
+//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginusername;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.Socket;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +21,42 @@ import javax.swing.JOptionPane;
  */
 public class Login_Interface extends javax.swing.JFrame {
 
-    GameBoard_Interface gameboard ;
+    public class ClientRecivingThread extends Thread {
+
+        Socket clientSocket;
+        DataInputStream reader;
+
+        public ClientRecivingThread(Socket clientSocket) {
+            this.clientSocket = clientSocket;
+            try {
+                reader = new DataInputStream(clientSocket.getInputStream());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+        public void run() {
+            while (true) {
+                String sentence = "";
+                try {
+                    sentence = reader.readUTF();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                try {
+                    reader.close();
+                    clientSocket.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        }
+    }
+    GameBoard_Interface gameboard;
+    private GloryClient client;
 
     /**
      * Creates new form Login_Interface
@@ -207,7 +248,6 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
 
         //---------------------- code debug area begin ---------------------
-
         //--------------------------- code debug area begin ------------------------------------------
         if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -218,7 +258,9 @@ public class Login_Interface extends javax.swing.JFrame {
         loginService.userName = loginusername.getText();
         loginService.password = new String(loginpasswrod.getPassword());
         boolean result = loginService.authenticateUser(loginService);
+
         if (result) {
+            GloryClient gc = new GloryClient();
             gameboard.setVisible(true);
             this.dispose();
         } else {
