@@ -8,11 +8,6 @@ package Glory_Schema_Interface;
 import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
-//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginpasswrod;
-//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginusername;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.net.Socket;
 import javax.swing.JOptionPane;
 
 /**
