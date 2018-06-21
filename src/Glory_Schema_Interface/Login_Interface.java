@@ -5,8 +5,14 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
+//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginpasswrod;
+//import static Glory_Schema_Interface.Login_Interface.ClientRecivingThread.loginusername;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.Socket;
 import javax.swing.JOptionPane;
 
 /**
@@ -214,7 +220,9 @@ public class Login_Interface extends javax.swing.JFrame {
         loginService.userName = loginusername.getText();
         loginService.password = new String(loginpasswrod.getPassword());
         boolean result = loginService.authenticateUser(loginService);
+
         if (result) {
+            GloryClient gc = new GloryClient();
             gameboard = new GameBoard_Interface();
 
             gameboard.setVisible(true);
