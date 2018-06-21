@@ -376,7 +376,11 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 String word=txt1.getText();
 boolean result=wordelement.contains(word);
 if(result){
-    JOptionPane.showMessageDialog(null, "Correct Word", "Login Failed", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, "Correct Word", "Correct", JOptionPane.INFORMATION_MESSAGE);
+}
+else
+{
+    JOptionPane.showMessageDialog(null, "No word found", "Wrong", JOptionPane.INFORMATION_MESSAGE);
 }
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_submitMouseClicked
