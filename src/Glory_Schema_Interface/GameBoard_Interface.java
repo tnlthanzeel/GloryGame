@@ -10,6 +10,7 @@ import Glory_Schema.WordElement;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author hame
@@ -374,7 +375,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
 String word=txt1.getText();
 boolean result=wordelement.contains(word);
-System.out.println(result);
+if(result){
+    JOptionPane.showMessageDialog(null, "Correct Word", "Login Failed", JOptionPane.INFORMATION_MESSAGE);
+}
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_submitMouseClicked
 
