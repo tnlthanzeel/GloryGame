@@ -18,6 +18,7 @@ public class GloryElement {
     public String playerName; /*Player name*/
 
     public Connection connectionObject;
+    public static int totalScore;
 
     public GloryElement() {
         connectionObject = DBConnection.GetConnection();

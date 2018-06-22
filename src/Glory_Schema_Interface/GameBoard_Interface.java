@@ -6,6 +6,7 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.LetterValueElement;
+import Glory_Schema.ScoreElement;
 import Glory_Schema.WordElement;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     LetterValueElement letterElement;
     public char[] firsthree = new char[3];
     WordElement wordelement;
+    ScoreElement scoreElement;
     /**
      * Creates new form GameBoard_Interface
      */
@@ -374,8 +376,15 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
 String word=txt1.getText();
+if(word.length()>11)
+{
+    JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
+    return;
+}
 boolean result=wordelement.contains(word);
+
 if(result){
+    ScoreElement.calculateScore();
     JOptionPane.showMessageDialog(null, "Correct Word", "Correct", JOptionPane.INFORMATION_MESSAGE);
 }
 else

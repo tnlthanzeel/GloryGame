@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Ak
  */
-public class GloryClient {
+public class GloryClient extends GloryElement{
 
     static Socket socket;
     static DataInputStream in;
@@ -24,6 +24,7 @@ public class GloryClient {
 
     public GloryClient() {
         try {
+           GloryElement gloryElement = new GloryElement();
             System.out.println("Connecting...");
             socket = new Socket("localhost", 7777);
             System.out.println("Connection Successful");

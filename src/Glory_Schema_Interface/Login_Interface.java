@@ -6,7 +6,6 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
-import Glory_Schema.GloryElement;
 import Glory_Schema.LoginService;
 import javax.swing.JOptionPane;
 
@@ -17,13 +16,13 @@ import javax.swing.JOptionPane;
 public class Login_Interface extends javax.swing.JFrame {
 
     GameBoard_Interface gameboard;
+    GloryClient gc;
 
     /**
      * Creates new form Login_Interface
      */
     public Login_Interface() {
         initComponents();
-        GloryElement gloryElement = new GloryElement();
         setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -205,25 +204,28 @@ public class Login_Interface extends javax.swing.JFrame {
 
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        try {
+            if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
+                JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-        if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
-            JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+            LoginService loginService = new LoginService();
+            loginService.userName = loginusername.getText();
+            loginService.password = new String(loginpasswrod.getPassword());
+            boolean result = loginService.authenticateUser(loginService);
+            //boolean result = true;
+            if (result) {
+                 gc = new GloryClient();
+                gameboard = new GameBoard_Interface();
 
-        LoginService loginService = new LoginService();
-        loginService.userName = loginusername.getText();
-        loginService.password = new String(loginpasswrod.getPassword());
-        boolean result = loginService.authenticateUser(loginService);
-
-        if (result) {
-            GloryClient gc = new GloryClient();
-            gameboard = new GameBoard_Interface();
-
-            gameboard.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                gameboard.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getStackTrace(), "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginActionPerformed
 
