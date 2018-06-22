@@ -17,7 +17,7 @@
 // *
 // * @author User
 // */
-//public class AutoAnswer {
+//public class AutoAnswer extends GloryElement{
 //    private final QuestionElement question;
 //
 //    public AutoAnswer(QuestionElement question) {
@@ -68,7 +68,7 @@
 //        int max=0;
 //        String sql = "select word from words where word like '"+ FirstLetter +"%'";
 //        ResultSet rs;
-//        Connection con = .connectDB();
+//        Connection con = connectionObject.getc();
 //        PreparedStatement st;
 //        st = con.prepareStatement(sql);
 //        rs = st.executeQuery(sql);
