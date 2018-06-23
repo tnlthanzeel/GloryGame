@@ -384,7 +384,8 @@ if(word.length()>11)
 boolean result=wordelement.contains(word);
 
 if(result){
-    ScoreElement.calculateScore();
+    int score=ScoreElement.calculateScore();
+    System.out.println(score);
     JOptionPane.showMessageDialog(null, "Correct Word", "Correct", JOptionPane.INFORMATION_MESSAGE);
 }
 else

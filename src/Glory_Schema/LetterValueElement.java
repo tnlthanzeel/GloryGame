@@ -13,8 +13,6 @@ public class LetterValueElement extends GloryElement {
     int counter = 3;
     Random random = new Random();
     char uniqueLetter;
-    char[] vowel = {'a', 'e', 'i', 'o', 'u'};
-    char[] consonent = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
     Random randomLetters;
     static int arrayElement;
     String[] values = {"Vowel", "Consonent",};
