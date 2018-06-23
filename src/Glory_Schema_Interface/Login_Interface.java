@@ -7,7 +7,9 @@ package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
 import Glory_Schema.LoginService;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -17,7 +19,6 @@ public class Login_Interface extends javax.swing.JFrame {
 
     GameBoard_Interface gameboard;
     GloryClient gc;
-
     /**
      * Creates new form Login_Interface
      */
@@ -124,6 +125,11 @@ public class Login_Interface extends javax.swing.JFrame {
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         login.setText("Login");
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
+        });
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
@@ -170,7 +176,7 @@ public class Login_Interface extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(loginusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +190,7 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(register))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -204,12 +210,12 @@ public class Login_Interface extends javax.swing.JFrame {
 
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+      
         try {
             if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
                 JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
             LoginService loginService = new LoginService();
             loginService.userName = loginusername.getText();
             loginService.password = new String(loginpasswrod.getPassword());
@@ -217,10 +223,19 @@ public class Login_Interface extends javax.swing.JFrame {
             //boolean result = true;
             if (result) {
                  gc = new GloryClient();
-                gameboard = new GameBoard_Interface();
-
-                gameboard.setVisible(true);
+                //int a=gc.getMinimumNumberOfPlayers();
+                //if(gc.getMinimumNumberOfPlayers()>=1)
+                {
+                 gameboard = new GameBoard_Interface();
+                  gameboard.setVisible(true);
                 this.dispose();
+                }
+               // else
+                {
+                //JOptionPane.showMessageDialog(null, "You need one more player to play", "Error", JOptionPane.ERROR_MESSAGE);
+                //return;
+                }
+               
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
@@ -235,6 +250,10 @@ public class Login_Interface extends javax.swing.JFrame {
         ri.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registerActionPerformed
+
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginMouseClicked
 
     /**
      * @param args the command line arguments

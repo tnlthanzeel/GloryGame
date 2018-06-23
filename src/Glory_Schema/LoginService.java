@@ -7,6 +7,7 @@ package Glory_Schema;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 
 
 
@@ -21,9 +22,10 @@ public class LoginService extends GloryElement {
     boolean isValidUser;
 
     public boolean authenticateUser(LoginService loginService) {
-        try {
+       try {
             ResultSet rs = connectionObject.createStatement().executeQuery("select * from users where username='" + loginService.userName + "' AND password='" + loginService.password + "'");
             if (rs.next()) {
+                playerName=rs.getString(2);
                 isValidUser = true;
             } else {
                 isValidUser = false;

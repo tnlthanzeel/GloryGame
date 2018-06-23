@@ -8,6 +8,7 @@ import java.sql.Connection;
  */
 public class GloryElement {
 
+    static int  minNumberOfPlayers=0;
     public static char[] allLetters = new char[11];
     public int userId; /*User id*/
 
@@ -15,7 +16,7 @@ public class GloryElement {
 
     public int numberOfPlayers; /*Number of players*/
 
-    public String playerName; /*Player name*/
+    public static String playerName; /*Player name*/
 
     public Connection connectionObject;
     public static int totalScore;
