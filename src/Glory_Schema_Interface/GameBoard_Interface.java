@@ -5,6 +5,7 @@
  */
 package Glory_Schema_Interface;
 
+import Glory_Schema.GloryElement;
 import Glory_Schema.LetterValueElement;
 import Glory_Schema.ScoreElement;
 import Glory_Schema.WordElement;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author hame
@@ -21,21 +23,22 @@ import javax.swing.JOptionPane;
 public class GameBoard_Interface extends javax.swing.JFrame {
 
     LetterValueElement letterElement;
-    public char[] firsthree = new char[3];
     WordElement wordelement;
     ScoreElement scoreElement;
-    int totalMarks=0;
+    int totalMarks = 0;
+    public char singleLetter;
+
     /**
      * Creates new form GameBoard_Interface
      */
-    public GameBoard_Interface()  {
+    public GameBoard_Interface() {
         initComponents();
         setTime();
         setExtendedState(MAXIMIZED_BOTH);
         letterElement = new LetterValueElement();
-        firsthree = letterElement.generateFirstThreeeLetters();
+        GloryElement.firsthree = letterElement.generateFirstThreeeLetters();
         LetterValueElement letterElement = new LetterValueElement();
-         wordelement=new WordElement();
+        wordelement = new WordElement();
     }
 
     /**
@@ -323,7 +326,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        btn3.setText(String.valueOf(firsthree[2]));
+        GloryElement.buttonAllLetters[2] = GloryElement.firsthree[2];
+
+        btn3.setText(String.valueOf(GloryElement.firsthree[2]));
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
@@ -331,18 +336,20 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseClicked
-        btn1.setText(String.valueOf(firsthree[0]));
+        GloryElement.buttonAllLetters[0] = GloryElement.firsthree[0];
+        btn1.setText(String.valueOf(GloryElement.firsthree[0]));
     }//GEN-LAST:event_btn1MouseClicked
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        btn2.setText(String.valueOf(firsthree[1]));
+        GloryElement.buttonAllLetters[1] = GloryElement.firsthree[1];
+        btn2.setText(String.valueOf(GloryElement.firsthree[1]));
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        Login_Interface lg=new Login_Interface();
+        Login_Interface lg = new Login_Interface();
         lg.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
@@ -350,67 +357,89 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
     private void btn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseClicked
 
-        if(btn4.getText().equals(""))
-        btn4.setText(String.valueOf(letterElement.GenerateLetter()));
+        if (btn4.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[3]=singleLetter;
+            btn4.setText(String.valueOf(singleLetter));
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btn4MouseClicked
 
     private void btn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseClicked
-        if(btn5.getText().equals(""))
-        btn5.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn5.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[4]=singleLetter;
+            btn5.setText(String.valueOf(singleLetter));        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btn5MouseClicked
 
     private void btn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseClicked
-        if(btn6.getText().equals(""))
-        btn6.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn6.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[5]=singleLetter;
+            btn6.setText(String.valueOf(singleLetter));        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btn6MouseClicked
 
     private void btn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseClicked
-        if(btn7.getText().equals(""))
-        btn7.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn7.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[6]=singleLetter;
+            btn7.setText(String.valueOf(singleLetter));
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_btn7MouseClicked
 
     private void btn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseClicked
-        if(btn8.getText().equals(""))
-        btn8.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn8.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[7]=singleLetter;
+            btn8.setText(String.valueOf(singleLetter));
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_btn8MouseClicked
 
     private void btn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseClicked
-        if(btn9.getText().equals(""))
-        btn9.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn9.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[8]=singleLetter;
+            btn9.setText(String.valueOf(singleLetter));
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_btn9MouseClicked
 
     private void btn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn10MouseClicked
-        if(btn10.getText().equals(""))
-        btn10.setText(String.valueOf(letterElement.GenerateLetter()));        // TODO add your handling code here:
+        if (btn10.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[9]=singleLetter;
+            btn10.setText(String.valueOf(singleLetter));
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_btn10MouseClicked
 
     private void btn11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn11MouseClicked
-        if(btn11.getText().equals(""))
-        btn11.setText(String.valueOf(letterElement.GenerateLetter()));
+        if (btn11.getText().equals("")) {
+            singleLetter = letterElement.GenerateLetter();
+            GloryElement.buttonAllLetters[10]=singleLetter;
+            btn11.setText(String.valueOf(singleLetter));
+        }
     }//GEN-LAST:event_btn11MouseClicked
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
-String word=txt1.getText();
-if(word.length()>11)
-{
-    JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-boolean result=wordelement.contains(word);
-
-if(result){
-    int score=ScoreElement.calculateScore();
-    totalMarks+=score;
-    jLabel4.setText(String.valueOf(totalMarks));
-    System.out.println(score);
-    JOptionPane.showMessageDialog(null, "Correct Word", "Correct", JOptionPane.INFORMATION_MESSAGE);
-}
-else
-{
-    JOptionPane.showMessageDialog(null, "No word found", "Wrong", JOptionPane.INFORMATION_MESSAGE);
-}
+        String word = txt1.getText();
+        if (word.length() > 11) {
+            JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        boolean result = wordelement.contains(word);
+        if (result) {
+            int score = ScoreElement.calculateScore();
+            totalMarks += score;
+            jLabel4.setText(String.valueOf(totalMarks));
+            System.out.println(score);
+            JOptionPane.showMessageDialog(null, "Correct Word", "Correct", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No word found", "Wrong", JOptionPane.INFORMATION_MESSAGE);
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_submitMouseClicked
 
@@ -446,9 +475,8 @@ else
 
             public void run() {
 
-              
-                    new GameBoard_Interface().setVisible(true);
-                
+                new GameBoard_Interface().setVisible(true);
+
             }
         });
     }
@@ -477,20 +505,15 @@ else
     private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
 
-  private void setTime()
-
-    {
+    private void setTime() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("H:mm:ss");
 
-        new Thread(new Runnable()
-        {
+        new Thread(new Runnable() {
 
             @Override
-            public void run()
-            {
-                while (true)
-                {
+            public void run() {
+                while (true) {
 
                     Date d = new Date();
                     jLabel5.setText(sdf.format(d));
@@ -500,8 +523,5 @@ else
         }).start();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-
 
 }

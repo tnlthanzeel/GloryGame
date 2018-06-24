@@ -24,6 +24,19 @@ public class ScoreElement extends GloryElement {
         this.PlayerScore = PlayerScore;
     }
 
+    public static boolean checkLetters() {
+        boolean isLetterAvailable = true;
+        for (int i = 0; i <= buttonAllLetters.length; i++) {
+            for (int j = 0; j <= allLetters.length; j++) {
+                if (buttonAllLetters[i] != allLetters[j]) {
+                    isLetterAvailable = false;
+                    break;
+                }
+            }
+        }
+        return isLetterAvailable;
+    }
+
     public static int calculateScore() {
         int score = 0;
         for (int i = 0; i < 21; i++) {
@@ -43,23 +56,17 @@ public class ScoreElement extends GloryElement {
         for (int i = 0; i < 11; i++) {
             if (allLetters[i] == 'x') {
                 score = score + 15;
-            }
-            else if (allLetters[i] == 'y') {
+            } else if (allLetters[i] == 'y') {
                 score = score + 15;
-            }
-            else if (allLetters[i] == 'z') {
+            } else if (allLetters[i] == 'z') {
                 score = score + 15;
-            }
-            else if (allLetters[i] == 'w') {
+            } else if (allLetters[i] == 'w') {
                 score = score + 15;
-            }
-            else if (allLetters[i] == 'p') {
+            } else if (allLetters[i] == 'p') {
                 score = score + 10;
-            }
-            else if (allLetters[i] == 'q') {
+            } else if (allLetters[i] == 'q') {
                 score = score + 10;
-            }
-            else if (allLetters[i] == 'r') {
+            } else if (allLetters[i] == 'r') {
                 score = score + 10;
             }
         }
