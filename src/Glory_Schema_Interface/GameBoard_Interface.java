@@ -428,6 +428,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        txt1.setText("");
         
         
         boolean result = wordelement.contains(word);
