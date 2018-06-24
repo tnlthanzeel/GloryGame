@@ -24,7 +24,7 @@ public class LetterValueElement extends GloryElement {
                 uniqueLetter = (char) (random.nextInt(26) + 'a');
                 if (firstThreeLetters[0] != uniqueLetter && firstThreeLetters[1] != uniqueLetter && firstThreeLetters[2] != uniqueLetter) {
                     firstThreeLetters[i] = uniqueLetter;
-                    allLetters[i] = uniqueLetter;
+                    //allLetters[i] = uniqueLetter;
                     break;
                 }
             }
@@ -50,8 +50,11 @@ public class LetterValueElement extends GloryElement {
                 }
             }
         }
-        allLetters[counter] = randomLetter;
+        //allLetters[counter] = randomLetter;
         counter++;
         return randomLetter;
     }
+    
+    
+    
 }

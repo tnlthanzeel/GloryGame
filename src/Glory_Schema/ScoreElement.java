@@ -25,20 +25,26 @@ public class ScoreElement extends GloryElement {
     }
 
     public static boolean checkLetters() {
-        boolean isLetterAvailable = true;
-        for (int i = 0; i <= buttonAllLetters.length; i++) {
-            for (int j = 0; j <= allLetters.length; j++) {
-                if (buttonAllLetters[i] != allLetters[j]) {
-                    isLetterAvailable = false;
-                    break;
-                }
-            }
+                boolean isLetterAvailable = true;
+
+        try{
+        String tempAllLetter = new String(buttonAllLetters);
+        for (int i = 0; i < allLetters.length; i++) {
+            String temp=String.valueOf(allLetters[i]);
+            isLetterAvailable = tempAllLetter.contains(temp);
         }
-        return isLetterAvailable;
+       
+        }catch(Exception ex){
+        System.out.println(ex.getStackTrace());
+        }
+     return isLetterAvailable;
     }
+    
 
     public static int calculateScore() {
-        int score = 0;
+         int score = 0;
+        try{
+       
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 11; j++) {
                 if (consonent[i] == allLetters[j]) {
@@ -69,6 +75,10 @@ public class ScoreElement extends GloryElement {
             } else if (allLetters[i] == 'r') {
                 score = score + 10;
             }
+        }
+        }catch(Exception ex){
+            System.out.println(ex.getStackTrace());
+        
         }
         return score;
     }

@@ -359,7 +359,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
         if (btn4.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[3]=singleLetter;
+            GloryElement.buttonAllLetters[3] = singleLetter;
             btn4.setText(String.valueOf(singleLetter));
         }
 
@@ -369,7 +369,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseClicked
         if (btn5.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[4]=singleLetter;
+            GloryElement.buttonAllLetters[4] = singleLetter;
             btn5.setText(String.valueOf(singleLetter));        // TODO add your handling code here:
         }
     }//GEN-LAST:event_btn5MouseClicked
@@ -377,7 +377,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseClicked
         if (btn6.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[5]=singleLetter;
+            GloryElement.buttonAllLetters[5] = singleLetter;
             btn6.setText(String.valueOf(singleLetter));        // TODO add your handling code here:
         }
     }//GEN-LAST:event_btn6MouseClicked
@@ -385,7 +385,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseClicked
         if (btn7.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[6]=singleLetter;
+            GloryElement.buttonAllLetters[6] = singleLetter;
             btn7.setText(String.valueOf(singleLetter));
         }       // TODO add your handling code here:
     }//GEN-LAST:event_btn7MouseClicked
@@ -393,7 +393,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseClicked
         if (btn8.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[7]=singleLetter;
+            GloryElement.buttonAllLetters[7] = singleLetter;
             btn8.setText(String.valueOf(singleLetter));
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btn8MouseClicked
@@ -401,7 +401,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseClicked
         if (btn9.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[8]=singleLetter;
+            GloryElement.buttonAllLetters[8] = singleLetter;
             btn9.setText(String.valueOf(singleLetter));
         }       // TODO add your handling code here:
     }//GEN-LAST:event_btn9MouseClicked
@@ -409,7 +409,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn10MouseClicked
         if (btn10.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[9]=singleLetter;
+            GloryElement.buttonAllLetters[9] = singleLetter;
             btn10.setText(String.valueOf(singleLetter));
         }       // TODO add your handling code here:
     }//GEN-LAST:event_btn10MouseClicked
@@ -417,19 +417,23 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn11MouseClicked
         if (btn11.getText().equals("")) {
             singleLetter = letterElement.GenerateLetter();
-            GloryElement.buttonAllLetters[10]=singleLetter;
+            GloryElement.buttonAllLetters[10] = singleLetter;
             btn11.setText(String.valueOf(singleLetter));
         }
     }//GEN-LAST:event_btn11MouseClicked
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
         String word = txt1.getText();
+        GloryElement.allLetters= word.toCharArray();
         if (word.length() > 11) {
             JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        
+        if (!scoreElement.checkLetters()) {
+            JOptionPane.showMessageDialog(null, "You have entered a letter that is not provided to you", "Inavlid Letter ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         boolean result = wordelement.contains(word);
         if (result) {
             int score = ScoreElement.calculateScore();
