@@ -434,6 +434,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             return;
         }
 
+        txt1.setText("");
+        
+        
         boolean result = wordelement.contains(word);
         if (result) {
             int score = ScoreElement.calculateScore();
