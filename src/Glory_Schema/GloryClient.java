@@ -15,6 +15,7 @@ import java.net.*;
 public class GloryClient extends GloryElement {
 
     private static Socket socket;
+    static int minPlayers = 0;
 
     public GloryClient() {
         try {
@@ -38,16 +39,17 @@ public class GloryClient extends GloryElement {
             String fromServer = br.readLine();
             System.out.println("Message received from the server : " + fromServer);
 
-            //minNumberOfPlayers = Integer.parseInt(fromServer);
+            minPlayers=minNumberOfPlayers = Integer.parseInt(fromServer);
+            System.out.println("minNumberOfPlayers " + minNumberOfPlayers);
+            setNumber(minPlayers);
+
         } catch (Exception ex) {
             System.out.println("Unable to start client");
         }
     }
 
-//    public int getMinimumNumberOfPlayers() {
-//        return minNumberOfPlayers;
-//    }
-}
-      
- 
+    public   int getMinimumNumberOfPlayers() {
 
+        return minNumberOfPlayers;
+    }
+}

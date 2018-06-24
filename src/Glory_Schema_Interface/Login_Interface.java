@@ -6,10 +6,12 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
+import Glory_Schema.GloryElement;
+import static Glory_Schema.GloryElement.playerName;
 import Glory_Schema.LoginService;
+import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -19,6 +21,7 @@ public class Login_Interface extends javax.swing.JFrame {
 
     GameBoard_Interface gameboard;
     GloryClient gc;
+
     /**
      * Creates new form Login_Interface
      */
@@ -210,7 +213,7 @@ public class Login_Interface extends javax.swing.JFrame {
 
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-      
+
         try {
             if (loginusername.getText().equals("") || new String(loginpasswrod.getPassword()).equals("")) {
                 JOptionPane.showMessageDialog(null, "Enter username and password", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -222,20 +225,17 @@ public class Login_Interface extends javax.swing.JFrame {
             boolean result = loginService.authenticateUser(loginService);
             //boolean result = true;
             if (result) {
-                 gc = new GloryClient();
-                //int a=gc.getMinimumNumberOfPlayers();
-                //if(gc.getMinimumNumberOfPlayers()>=1)
-                {
-                 gameboard = new GameBoard_Interface();
-                  gameboard.setVisible(true);
-                this.dispose();
+                gc = new GloryClient();
+                if (gc.getMinimumNumberOfPlayers() < 2) {
+                    JOptionPane.showMessageDialog(null, "You need one more player to play,try login in after another player connects", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-               // else
-                {
-                //JOptionPane.showMessageDialog(null, "You need one more player to play", "Error", JOptionPane.ERROR_MESSAGE);
-                //return;
+                int g = gc.getMinimumNumberOfPlayers();
+                if (gc.getMinimumNumberOfPlayers() >= 2) {
+                    login.setEnabled(false);
+                    gameboard = new GameBoard_Interface();
+                    gameboard.setVisible(true);
+                    this.dispose();
                 }
-               
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
@@ -300,7 +300,7 @@ public class Login_Interface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JButton login;
+    private static javax.swing.JButton login;
     public static javax.swing.JPasswordField loginpasswrod;
     public static javax.swing.JTextField loginusername;
     private javax.swing.JButton register;
