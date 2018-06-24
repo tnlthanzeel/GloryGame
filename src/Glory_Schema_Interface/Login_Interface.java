@@ -231,6 +231,7 @@ public class Login_Interface extends javax.swing.JFrame {
 //                    JOptionPane.showMessageDialog(null, "You need one more player to play,try login in after another player connects", "Error", JOptionPane.ERROR_MESSAGE);
 //                }
                 while (isNotTwoPlayers) {
+                                    Thread.sleep(100);
                     if (LoginService.checkIfClientsConnected() >= 2) {
                         isNotTwoPlayers = false;
                     }

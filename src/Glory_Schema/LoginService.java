@@ -44,7 +44,8 @@ public class LoginService extends GloryElement {
         return isValidUser;
     }
 
-    public static int checkIfClientsConnected() {
+    public static int checkIfClientsConnected() throws InterruptedException {
+        Thread.sleep(100);
         Socket socket;
         try {
             String host = "localhost";
