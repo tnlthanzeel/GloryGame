@@ -25,60 +25,60 @@ public class ScoreElement extends GloryElement {
     }
 
     public static boolean checkLetters() {
-                boolean isLetterAvailable = true;
+        boolean isLetterAvailable = true;
 
-        try{
-        String tempAllLetter = new String(buttonAllLetters);
-        for (int i = 0; i < allLetters.length; i++) {
-            String temp=String.valueOf(allLetters[i]);
-            isLetterAvailable = tempAllLetter.contains(temp);
+        try {
+            String tempAllLetter = new String(buttonAllLetters);
+            for (int i = 0; i < allLetters.length; i++) {
+                String temp = String.valueOf(allLetters[i]);
+                isLetterAvailable = tempAllLetter.contains(temp);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getStackTrace());
         }
-       
-        }catch(Exception ex){
-        System.out.println(ex.getStackTrace());
-        }
-     return isLetterAvailable;
+        return isLetterAvailable;
     }
-    
 
     public static int calculateScore() {
-         int score = 0;
-        try{
-       
-        for (int i = 0; i < 21; i++) {
-            for (int j = 0; j < 11; j++) {
-                if (consonent[i] == allLetters[j]) {
-                    score = score + 10;
+        int score = 0;
+        String tempLetters;
+        String temp;
+        String rare = "xyzw";
+        String hard = "pqr";
+
+        try {
+            temp = new String(consonent);
+            //Score for consonent
+            for (int i = 0; i < allLetters.length; i++) {
+                tempLetters = String.valueOf(allLetters[i]);
+                if (temp.contains(tempLetters)) {
+                    score += 10;
                 }
             }
-        }
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 11; j++) {
-                if (vowel[i] == allLetters[j]) {
-                    score = score + 2;
+            //Score for vowel
+            temp = new String(vowel);
+            for (int i = 0; i < allLetters.length; i++) {
+                tempLetters = String.valueOf(allLetters[i]);
+                if (temp.contains(tempLetters)) {
+                    score += 2;
                 }
             }
-        }
-        for (int i = 0; i < 11; i++) {
-            if (allLetters[i] == 'x') {
-                score = score + 15;
-            } else if (allLetters[i] == 'y') {
-                score = score + 15;
-            } else if (allLetters[i] == 'z') {
-                score = score + 15;
-            } else if (allLetters[i] == 'w') {
-                score = score + 15;
-            } else if (allLetters[i] == 'p') {
-                score = score + 10;
-            } else if (allLetters[i] == 'q') {
-                score = score + 10;
-            } else if (allLetters[i] == 'r') {
-                score = score + 10;
+            //Score for Rare and hard letters
+            for (int i = 0; i < allLetters.length; i++) {
+                tempLetters = String.valueOf(allLetters[i]);
+                if (rare.contains(tempLetters)) {
+                    score += 15;
+                }
+                if (hard.contains(tempLetters)) {
+                    score += 20;
+                }
             }
-        }
-        }catch(Exception ex){
+            //Reducing Score for not using all the letters given
+            score = score - (11 - allLetters.length);
+        } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
-        
+
         }
         return score;
     }
