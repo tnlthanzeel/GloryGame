@@ -9,6 +9,7 @@ import Glory_Schema.GloryClient;
 import Glory_Schema.GloryElement;
 import static Glory_Schema.GloryElement.playerName;
 import Glory_Schema.LoginService;
+import Glory_Schema.update_online_players;
 import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ public class Login_Interface extends javax.swing.JFrame {
 
     GameBoard_Interface gameboard;
     GloryClient gc;
+    String Username;
 
     /**
      * Creates new form Login_Interface
@@ -238,8 +240,12 @@ public class Login_Interface extends javax.swing.JFrame {
                     System.out.print("checking for more players");
                 }
                     login.setEnabled(false);
+                     Username = loginusername.getText();
+                      update_online_players onlineplayers = new update_online_players();
+                      onlineplayers.updateLogingstatus(Username);
                     gameboard = new GameBoard_Interface();
                     gameboard.setVisible(true);
+                     
                     this.dispose();
                 
             } else {
