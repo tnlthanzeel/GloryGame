@@ -41,6 +41,7 @@ public class Login_Interface extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,12 +53,15 @@ public class Login_Interface extends javax.swing.JFrame {
         login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setText("Login service might take less than 2 minutes to login, please be patient");
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 0));
 
@@ -152,6 +156,13 @@ public class Login_Interface extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Help");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,11 +170,11 @@ public class Login_Interface extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(login)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -173,13 +184,19 @@ public class Login_Interface extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(register)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(92, 92, 92))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(loginusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +208,9 @@ public class Login_Interface extends javax.swing.JFrame {
                 .addComponent(login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jButton1))
                     .addComponent(register))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,17 +250,17 @@ public class Login_Interface extends javax.swing.JFrame {
 //                    JOptionPane.showMessageDialog(null, "You need one more player to play,try login in after another player connects", "Error", JOptionPane.ERROR_MESSAGE);
 //                }
                 while (isNotTwoPlayers) {
-                                    Thread.sleep(100);
+                    Thread.sleep(100);
                     if (LoginService.checkIfClientsConnected() >= 2) {
                         isNotTwoPlayers = false;
                     }
                     System.out.print("checking for more players");
                 }
-                    login.setEnabled(false);
-                    gameboard = new GameBoard_Interface();
-                    gameboard.setVisible(true);
-                    this.dispose();
-                
+                login.setEnabled(false);
+                gameboard = new GameBoard_Interface();
+                gameboard.setVisible(true);
+                this.dispose();
+
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
@@ -260,6 +279,14 @@ public class Login_Interface extends javax.swing.JFrame {
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_loginMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Help h = new Help();
+        h.setVisible(true);
+        this.dispose();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -297,11 +324,13 @@ public class Login_Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
