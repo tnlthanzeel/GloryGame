@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Glory_Schema_Interface;
+
 import Glory_Schema.DBConnection;
 import Glory_Schema.GloryElement;
 import Glory_Schema.LetterValueElement;
@@ -44,9 +45,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     ResultSet rs = null;
     Statement statement = null;
     DBConnection con = null;
-   DefaultListModel DML = new DefaultListModel();
+    DefaultListModel DML = new DefaultListModel();
     String Username;
-    
+
     /**
      * Creates new form GameBoard_Interface
      */
@@ -58,40 +59,38 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         GloryElement.firsthree = letterElement.generateFirstThreeeLetters();
         LetterValueElement letterElement = new LetterValueElement();
         wordelement = new WordElement();
-            con = new DBConnection();
-       statement =con.GetConnection().createStatement();
-      
-       onlineplayers();
-       this.bindData();
+        con = new DBConnection();
+        statement = con.GetConnection().createStatement();
+
+        onlineplayers();
+        this.bindData();
     }
-  private ArrayList onlineplayers()
-    { 
-        ArrayList stars=new ArrayList();
-        try{ 
-            
-              String Sql ="Select * from users";
-              String userstatus;
-              rs=statement.executeQuery(Sql);
-              while(rs.next())
-              { 
-                  if(rs.getString("isonline").equals("0"))
-                  {
+
+    private ArrayList onlineplayers() {
+        ArrayList stars = new ArrayList();
+        try {
+
+            String Sql = "Select * from users";
+            String userstatus;
+            rs = statement.executeQuery(Sql);
+            while (rs.next()) {
+                if (rs.getString("isonline").equals("0")) {
                     //DML.addElement(rs.getString("Username") + " offline");
-                      stars.add(rs.getString("Username") + " - offline");
-                    
-                 }else 
-                  { 
-                     stars.add(rs.getString("Username") + " - online");
-                   
-                  }
-           
+                    stars.add(rs.getString("Username") + " - offline");
+
+                } else {
+                    stars.add(rs.getString("Username") + " - online");
+
+                }
+
             }
-            }catch (SQLException ex) { 
-                Logger.getLogger(GameBoard_Interface.class.getName()).log(Level.SEVERE,null,ex);
-            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GameBoard_Interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return stars;
     }
-        private void bindData(){
+
+    private void bindData() {
         //foreach with functinal operation
         onlineplayers().stream().forEach((star) -> {
             DML.addElement(star);
@@ -99,22 +98,22 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         friendList.setModel(DML);
         friendList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-      private void searchFilter(String searchTerm)
-    {
-        DefaultListModel filteredItems=new DefaultListModel();
-        ArrayList stars=onlineplayers();
+
+    private void searchFilter(String searchTerm) {
+        DefaultListModel filteredItems = new DefaultListModel();
+        ArrayList stars = onlineplayers();
 
         stars.stream().forEach((star) -> {
-            String starName=star.toString().toLowerCase();
+            String starName = star.toString().toLowerCase();
             if (starName.contains(searchTerm.toLowerCase())) {
                 filteredItems.addElement(star);
             }
         });
-        DML=filteredItems;
+        DML = filteredItems;
         friendList.setModel(DML);
 
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -576,9 +575,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
         Login_Interface lg = new Login_Interface();
         lg.setVisible(true);
-      //  Username = loginusername.getText();
-       //  update_offline_players offlineplayers = new update_offline_players();
-         //offlineplayers.update_offline_players(Username);
+        //  Username = loginusername.getText();
+        //  update_offline_players offlineplayers = new update_offline_players();
+        //offlineplayers.update_offline_players(Username);
         this.dispose();
 
     }//GEN-LAST:event_btn_exitActionPerformed
@@ -654,22 +653,35 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btn11MouseClicked
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
-        String word = txt1.getText();
-        GloryElement.allLetters= word.toCharArray();
+        String word = txt1.getText().toLowerCase();
+        GloryElement.allLetters = word.toCharArray();
         if (word.length() > 11) {
             JOptionPane.showMessageDialog(null, "Word has more than 11 letters", "Word Too Long", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (!scoreElement.checkLetters()) {
+        if (!ScoreElement.checkLetters()) {
             JOptionPane.showMessageDialog(null, "You have entered a letter that is not provided to you", "Inavlid Letter ", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        txt1.setText("");
-        
-        
+
         boolean result = wordelement.contains(word);
-        if (result) {
+        if (result) {         
+            txt1.setText("");
+            //clearing given letters on button if the word is correct
+            btn1.setText("");
+            btn2.setText("");
+            btn3.setText("");
+            btn4.setText("");
+            btn5.setText("");
+            btn6.setText("");
+            btn7.setText("");
+            btn8.setText("");
+            btn9.setText("");
+            btn10.setText("");
+            btn11.setText("");
+            /////////////////////
+
             int score = ScoreElement.calculateScore();
             totalMarks += score;
             jLabel4.setText(String.valueOf(totalMarks));
@@ -690,7 +702,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_txt1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-             searchFilter(jTextField1.getText());
+        searchFilter(jTextField1.getText());
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyPressed
 
