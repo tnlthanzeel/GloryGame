@@ -670,9 +670,8 @@ public class GameBoard_Interface extends javax.swing.JFrame {
                 lText = String.valueOf(ctime);
                 if (ctime > 9) {
                     jLabel15.setText(lText + " s");
-                }
-                else{
-                    jLabel15.setText("0"+lText + " s");
+                } else {
+                    jLabel15.setText("0" + lText + " s");
                 }
             }
         }
@@ -708,8 +707,12 @@ public class GameBoard_Interface extends javax.swing.JFrame {
 
             int score = ScoreElement.calculateScore();
             Statement st;
+            try {
                 st = GloryElement.connectionObject.createStatement();
-                st.executeUpdate("insert into users(username,password) values('" + registeruser.userName + "','" + registeruser.password + "')");
+                st.executeUpdate("update users set currentscore='" + score + "' where username='" + GloryElement.playerName + "'");
+            } catch (SQLException ex) {
+                Logger.getLogger(GameBoard_Interface.class.getName()).log(Level.SEVERE, null, ex);
+            }
             totalMarks += score;
             jLabel4.setText(String.valueOf(totalMarks));
             System.out.println(score);
