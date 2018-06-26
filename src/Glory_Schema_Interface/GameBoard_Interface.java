@@ -33,6 +33,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.Timer;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -704,6 +707,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             /////////////////////
 
             int score = ScoreElement.calculateScore();
+            Statement st;
+                st = GloryElement.connectionObject.createStatement();
+                st.executeUpdate("insert into users(username,password) values('" + registeruser.userName + "','" + registeruser.password + "')");
             totalMarks += score;
             jLabel4.setText(String.valueOf(totalMarks));
             System.out.println(score);
