@@ -6,8 +6,6 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
-import Glory_Schema.GloryElement;
-import static Glory_Schema.GloryElement.playerName;
 import Glory_Schema.LoginService;
 import Glory_Schema.update_online_players;
 import java.sql.ResultSet;
@@ -67,7 +65,7 @@ public class Login_Interface extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setText("Please be patient while connecting you to the game...");
+        jLabel6.setText("Please be patient while connecting you to the game... this might take 3 minutes");
 
         jPanel5.setBackground(new java.awt.Color(255, 51, 0));
 

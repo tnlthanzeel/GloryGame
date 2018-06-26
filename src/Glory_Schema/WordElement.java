@@ -19,9 +19,7 @@ public class WordElement extends GloryElement {
 
     public WordElement() {
         try {
-            String currentPath = System.getProperty("user.dir");
-            Path path = Paths.get(currentPath + "\\src\\images\\words.txt");
-            //Path path = Paths.get(currentPath+"\\GloryGame\\images\\words.txt");
+            Path path = Paths.get("words.txt");
             byte[] readBytes = Files.readAllBytes(path);
             String wordListContents = new String(readBytes, "UTF-8");
             String[] words = wordListContents.toLowerCase().split("\n");

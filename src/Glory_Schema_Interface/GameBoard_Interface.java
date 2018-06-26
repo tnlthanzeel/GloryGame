@@ -50,7 +50,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     public char singleLetter;
     ResultSet rs = null;
     Statement statement = null;
-    DBConnection con = null;
+    Statement statement1 = null;
     DefaultListModel DML = new DefaultListModel();
     String Username;
     int ctime = 30;
@@ -66,21 +66,41 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         GloryElement.firsthree = letterElement.generateFirstThreeeLetters();
         LetterValueElement letterElement = new LetterValueElement();
         wordelement = new WordElement();
-        con = new DBConnection();
-        statement = con.GetConnection().createStatement();
+        statement = GloryElement.connectionObject.createStatement();
 
         onlineplayers();
         this.bindData();
     }
 
     private ArrayList onlineplayers() {
+        int[] marks=new int[3];
+        String[] players=new String[3];
         ArrayList stars = new ArrayList();
         try {
-
-            String Sql = "Select * from users";
+        int count=0;
+            String Sql = "Select * from users where isonline=1";
             String userstatus;
             rs = statement.executeQuery(Sql);
             while (rs.next()) {
+                
+                if(count==3)
+                {
+                count=0;
+                jLabel6.setText(players[0]);
+                 jLabel8.setText(players[1]);
+                  jLabel10.setText(players[2]);
+                jLabel12.setText(String.valueOf(marks[0]));
+                 jLabel13.setText(String.valueOf(marks[1]));
+                  jLabel14.setText(String.valueOf(marks[2]));
+                
+                }
+                players[count]=rs.getString("username");
+                marks[count]=rs.getInt("currentscore");
+                count++;
+                
+                
+                
+                
                 if (rs.getString("isonline").equals("0")) {
                     //DML.addElement(rs.getString("Username") + " offline");
                     stars.add(rs.getString("Username") + " - offline");
@@ -544,7 +564,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jLabel6.getAccessibleContext().setAccessibleName("Player One");
+        jLabel6.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -698,6 +718,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
         if (result) {
             txt1.setText("");
             //clearing given letters on button if the word is correct
+            btn3.setText(String.valueOf(GloryElement.firsthree[2]));
+              btn1.setText(String.valueOf(GloryElement.firsthree[0]));
+               btn2.setText(String.valueOf(GloryElement.firsthree[1]));
             btn1.setText("");
             btn2.setText("");
             btn3.setText("");
@@ -709,7 +732,9 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             btn9.setText("");
             btn10.setText("");
             btn11.setText("");
-            /////////////////////
+            LetterValueElement.generateFirstThreeeLetters();
+             
+                       /////////////////////
 
             int score = ScoreElement.calculateScore();
             Statement st;
@@ -727,6 +752,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No word found", "Wrong", JOptionPane.INFORMATION_MESSAGE);
         }
 // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_submitMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -802,7 +828,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -813,7 +839,7 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
