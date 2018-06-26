@@ -11,6 +11,10 @@ import static Glory_Schema.GloryElement.playerName;
 import Glory_Schema.LoginService;
 import Glory_Schema.update_online_players;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -250,6 +254,13 @@ public class Login_Interface extends javax.swing.JFrame {
 //                if (gc.getMinimumNumberOfPlayers() < 2) {
 //                    JOptionPane.showMessageDialog(null, "You need one more player to play,try login in after another player connects", "Error", JOptionPane.ERROR_MESSAGE);
 //                }
+                Statement st;
+                try {
+                    st = GloryElement.connectionObject.createStatement();
+                    st.executeUpdate("update users set currentscore='" + 0 + "' where username='" + loginService.userName + "'");
+                } catch (SQLException ex) {
+                    Logger.getLogger(GameBoard_Interface.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 while (isNotTwoPlayers) {
                     Thread.sleep(100);
                     if (LoginService.checkIfClientsConnected() >= 2) {
@@ -257,15 +268,15 @@ public class Login_Interface extends javax.swing.JFrame {
                     }
                     System.out.print("checking for more players");
                 }
-                    login.setEnabled(false);
-                     Username = loginusername.getText();
-                      update_online_players onlineplayers = new update_online_players();
-                      onlineplayers.updateLogingstatus(Username);
-                    gameboard = new GameBoard_Interface();
-                    gameboard.setVisible(true);
-                     
-                    this.dispose();
-                
+                login.setEnabled(false);
+                Username = loginusername.getText();
+                update_online_players onlineplayers = new update_online_players();
+                onlineplayers.updateLogingstatus(Username);
+                gameboard = new GameBoard_Interface();
+                gameboard.setVisible(true);
+
+                this.dispose();
+
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
