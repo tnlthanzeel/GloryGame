@@ -80,6 +80,7 @@ public class ScoreElement extends GloryElement {
             System.out.println(ex.getStackTrace());
 
         }
+        
         return score;
     }
 }
