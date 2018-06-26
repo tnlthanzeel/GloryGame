@@ -6,12 +6,8 @@
 package Glory_Schema_Interface;
 
 import Glory_Schema.GloryClient;
-import Glory_Schema.GloryElement;
-import static Glory_Schema.GloryElement.playerName;
 import Glory_Schema.LoginService;
 import Glory_Schema.update_online_players;
-import java.sql.ResultSet;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**

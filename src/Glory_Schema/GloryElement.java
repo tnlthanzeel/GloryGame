@@ -25,7 +25,7 @@ public class GloryElement {
 
     public static String playerName; /*Player name*/
 
-    public Connection connectionObject;
+    public static Connection connectionObject;
     public static int totalScore;
 
     public int getNumber() {
