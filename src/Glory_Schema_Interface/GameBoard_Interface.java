@@ -583,11 +583,17 @@ public class GameBoard_Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+
+         
         Login_Interface lg = new Login_Interface();
         lg.setVisible(true);
-        //  Username = loginusername.getText();
-        //  update_offline_players offlineplayers = new update_offline_players();
-        //offlineplayers.update_offline_players(Username);
+        Statement offline;
+            try {
+                offline = GloryElement.connectionObject.createStatement();
+                offline.executeUpdate("update users set isonline='0' where username='" + GloryElement.playerName + "'");
+            } catch (SQLException ex) {
+                Logger.getLogger(GameBoard_Interface.class.getName()).log(Level.SEVERE, null, ex);
+            }
         this.dispose();
 
     }//GEN-LAST:event_btn_exitActionPerformed

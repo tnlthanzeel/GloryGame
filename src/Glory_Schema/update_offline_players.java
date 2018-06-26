@@ -28,7 +28,6 @@ public class update_offline_players extends GloryElement {
     
     public String userName;
 
-    private Connection connction;
 
      public void update_offline_players(String user)
     { 
