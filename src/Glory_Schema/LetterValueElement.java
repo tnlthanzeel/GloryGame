@@ -11,13 +11,13 @@ public class LetterValueElement extends GloryElement {
 
     int score;
     int counter = 3;
-    Random random = new Random();
-    char uniqueLetter;
-    Random randomLetters;
+    static Random random = new Random();
+    static char uniqueLetter;
+    static Random randomLetters;
     static int arrayElement;
     String[] values = {"Vowel", "Consonent",};
 
-    public char[] generateFirstThreeeLetters() {
+    public static char[] generateFirstThreeeLetters() {
         char[] firstThreeLetters = new char[3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j >= 0; j++) {
